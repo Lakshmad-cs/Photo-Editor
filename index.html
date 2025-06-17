@@ -667,23 +667,13 @@
       }
     }
 
-    function downloadCurrent() {
-      if (processedPhotos.length === 0) return;
-      
-      const photo = processedPhotos[currentIndex];
-     const blob = photo.blob;
-const blobUrl = URL.createObjectURL(blob);
+   function downloadCurrent() {
+  if (processedPhotos.length === 0) return;
+  const photo = processedPhotos[currentIndex];
+  const blobUrl = URL.createObjectURL(photo.blob);
+  window.open(blobUrl, '_blank');
+}
 
-const link = document.createElement('a');
-link.href = blobUrl;
-link.download = `enhanced_${photo.name}`;
-document.body.appendChild(link);
-link.click();
-document.body.removeChild(link);
-
-setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
-
-    }
 
     async function downloadAll() {
       if (processedPhotos.length === 0) return;
