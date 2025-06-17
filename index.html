@@ -671,10 +671,18 @@
       if (processedPhotos.length === 0) return;
       
       const photo = processedPhotos[currentIndex];
-      const link = document.createElement('a');
-      link.download = `enhanced_${photo.name}`;
-      link.href = photo.dataUrl;
-      link.click();
+     const blob = photo.blob;
+const blobUrl = URL.createObjectURL(blob);
+
+const link = document.createElement('a');
+link.href = blobUrl;
+link.download = `enhanced_${photo.name}`;
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+
+setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
+
     }
 
     async function downloadAll() {
@@ -686,11 +694,18 @@
         zip.file(`enhanced_${photo.name}`, photo.blob);
       });
       
-      const content = await zip.generateAsync({type: 'blob'});
-      const link = document.createElement('a');
-      link.download = 'enhanced_photos.zip';
-      link.href = URL.createObjectURL(content);
-      link.click();
+      const content = await zip.generateAsync({ type: 'blob' });
+const blobUrl = URL.createObjectURL(content);
+
+const link = document.createElement('a');
+link.href = blobUrl;
+link.download = 'enhanced_photos.zip';
+document.body.appendChild(link);
+link.click();
+document.body.removeChild(link);
+
+setTimeout(() => URL.revokeObjectURL(blobUrl), 100);
+
     }
 
     // Add roundRect method for older browsers
