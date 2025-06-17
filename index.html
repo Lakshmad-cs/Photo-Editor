@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Modern Photo Enhancer</title>
+  <title>Artha Education Instituter - Artha SnapTagger</title>
   <style>
     /* Modern Professional CSS with Enhanced Features */
     * {
@@ -31,6 +31,23 @@
       padding: 40px;
       border: 1px solid rgba(255, 255, 255, 0.3);
     }
+    .branding {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: #555;
+  animation: fadeIn 2s ease-in-out infinite alternate;
+  font-style: italic;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0.2; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 
     h1 {
       font-size: 2.5rem;
@@ -391,7 +408,9 @@
 </head>
 <body>
   <div class="container">
-    <h1>✨ Modern Photo Enhancer</h1>
+    <h1>✨ Artha SnapTagger</h1>
+<div class="branding">Powered by Artha Education</div>
+
 
     <div class="form-section">
       <label for="photoInput">📸 Select Photos</label>
